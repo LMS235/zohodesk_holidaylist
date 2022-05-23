@@ -1,0 +1,78 @@
+// Update Holiday List via API
+// Florian Lamml
+// 23.05.2022
+// Jahr bestimmen
+year = zoho.currentdate.right(4);
+//DE Holiday
+getDEHoliday = invokeurl
+[
+	url :"https://get.api-feiertage.de/?years=" + year + "&all_states=true"
+	type :GET
+];
+// BY Holiday
+getBYHoliday = invokeurl
+[
+	url :"https://get.api-feiertage.de/?years=" + year + "&states=by"
+	type :GET
+];
+// General
+headerMap = Map();
+headerMap.put("Content-Type","application/json");
+// Vorbereiten DE
+responseDE = getDEHoliday;
+dataDE = responseDE.getJSON("feiertage");
+json_listDE = dataDE.toJSONList();
+// Vorbereiten BY
+responseBY = getBYHoliday;
+dataBY = responseBY.getJSON("feiertage");
+json_listBY = dataBY.toJSONList();
+// Verarbeiten DE
+listVarDE = list();
+for each  item in json_listDE
+{
+	datumlang = item.getJSON("date");
+	datum = datumlang.getSuffix(year+"-");
+	name = item.getJSON("fname");
+	paramMap = Map();
+	paramMap.put("from",datum);
+	paramMap.put("to",datum);
+	paramMap.put("holidayName",name);
+	listVarDE.add(paramMap);
+}
+pretext = '{"holidays" : [';
+posttext = '] , "name" : "Feiertage_Deutschland"}';
+fulltext = pretext + "" + listVarDE + "" + posttext;
+updatelistDE = invokeurl
+[
+	url :"https://desk.zoho.eu/api/v1/holidayList/<HOLIDAYLISTID>"
+	type :PATCH
+	parameters:fulltext
+	headers:headerMap
+	connection:"holidayup"
+];
+info updatelistDE;
+// Verarbeiten BY
+listVarBY = list();
+for each  item in json_listBY
+{
+	datumlang = item.getJSON("date");
+	datum = datumlang.getSuffix(year+"-");
+	name = item.getJSON("fname");
+	paramMap = Map();
+	paramMap.put("from",datum);
+	paramMap.put("to",datum);
+	paramMap.put("holidayName",name);
+	listVarBY.add(paramMap);
+}
+pretext = '{"holidays" : [';
+posttext = '] , "name" : "Feiertage_Bayern"}';
+fulltext = pretext + "" + listVarBY + "" + posttext;
+updatelistBY = invokeurl
+[
+	url :"https://desk.zoho.eu/api/v1/holidayList/<HOLIDAYLISTID>"
+	type :PATCH
+	parameters:fulltext
+	headers:headerMap
+	connection:"holidayup"
+];
+info updatelistBY;
