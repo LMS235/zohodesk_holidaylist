@@ -9,8 +9,8 @@ Eine Custom Function um jedes Jahr die Holiday List zu pflegen
 1. Click on Setup > Developer Space > Connections 
 2. Click on Create Connection
 3. Choose Zoho OAuth
-4. Name Connection and connection link as "holidayup"
-5. In Scope Choose Desk.settings.UPDATE
+4. Name Connection and connection link as `holidayup`
+5. In Scope Choose `Desk.settings.UPDATE`
 6. Click on Create and Connect
 7. Click on Connect
 8. Click on Accept and proceed
