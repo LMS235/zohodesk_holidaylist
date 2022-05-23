@@ -1,4 +1,4 @@
-# Custom Function für externe Ticketnummern
+# Custom Function für die Pflege der Holiday Lists
 
 Eine Custom Function um jedes Jahr die Holiday List zu pflegen
 
