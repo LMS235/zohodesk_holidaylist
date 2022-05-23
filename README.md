@@ -2,6 +2,8 @@
 
 Eine Custom Function um jedes Jahr die Holiday List zu pflegen
 
+Im Codebeispiel wird DE und BY abgefragt und in zwei entsprechende Listen geschrieben. 
+
 ## Vorbereitung
  
 ### OAuth Verbindung
