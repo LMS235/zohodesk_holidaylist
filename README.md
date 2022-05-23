@@ -18,8 +18,8 @@ Eine Custom Function um jedes Jahr die Holiday List zu pflegen
 ### Anpassungen im Code
 
   - Die Feiertage die man benötigt entsprechend definieren und die API erstellen (im Code sind es aktuell DEUTSCHLAND und BAYERN (BY)) - Siehe api-feiertage.de
-  - im ´posttext = '] , "name" : "Feiertage_Deutschland"}';´ entsprechend den Namen der Holiday List hinterlegen
-  - im ´url :"https://desk.zoho.eu/api/v1/holidayList/<HOLIDAYLISTID>"´ entsprechend die ID der Holiday List hinterlegen
+  - im `posttext = '] , "name" : "Feiertage_Deutschland"}';` entsprechend den Namen der Holiday List hinterlegen
+  - im `url :"https://desk.zoho.eu/api/v1/holidayList/<HOLIDAYLISTID>"` entsprechend die ID der Holiday List hinterlegen
 
 # Einbau als Schedule
 
